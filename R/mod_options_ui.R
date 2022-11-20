@@ -4,13 +4,19 @@ OptionsModUI <- function(id) {
   tagList(
     tags$form(
       class = "px-2",
-      textInput(
-        ns("app_name"),
-        label = "Application Title",
-        value = "Shiny Application",
-        width = "100%"
+      tagAppendAttributes(
+        textInput(
+          ns("app_name"),
+          label = "Application Title",
+          value = "Shiny Application",
+          width = "100%"
+        ),
+        class = "setting-input"
       ),
-      br(),
+      CSSFileInput(
+        ns("css_style"),
+        label = "Apply CSS Style"
+      ),
       checkboxInput(
         ns("remove_label"),
         label = "Show Component Labels",
@@ -32,12 +38,15 @@ OptionsModUI <- function(id) {
         class = "btn btn-secondary btn-block",
         "Preview Full Page"
       ),
-      shinyscreenshot::screenshotButton(
-        id = "canvas-page",
-        label = "Snapshot UI",
-        scale = 1.5,
-        filename = "ui_wireframe",
-        class = "btn-secondary btn-block"
+      screenshtButton(
+        class = "btn-secondary btn-block",
+        scale = 1.5
+      ),
+      tags$button(
+        id = ns("canvas_clear"),
+        type = "button",
+        class = "btn btn-danger btn-block",
+        "Clear Page"
       )
     )
   )

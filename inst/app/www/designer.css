@@ -11,19 +11,35 @@ header > h1 {
   margin: 0;
 }
 
-.component-form h2 {
-  font-size: 1.1rem;
+.tab-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
-.component-form h3, .bin-container h3 {
+.component-form .sidebar-title {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.card-body h3, .bin-container h3 {
   font-size: 1.05rem;
+}
+
+.card-body .notes-header {
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.card-body .notes-list {
+  font-size: 0.9rem;
 }
 
 h5.modal-title {
   margin-top: 0;
 }
 
-.guide-button {
+.btn.guide-button {
   position: absolute;
   right: 0.5rem;
   top: 0;
@@ -35,11 +51,11 @@ h5.modal-title {
   min-width: 200px;
 }
 
-.page-type-dropdown .form-check:not(:last-child) {
-  margin-bottom: 0.5rem;
+.page-type-dropdown .form-group {
+  margin-top: 0.5rem;
 }
 
-.page-type-dropdown .form-group {
+.page-type-dropdown .form-group, .page-type-dropdown .radio {
   margin-bottom: 0.25rem;
 }
 
@@ -48,23 +64,91 @@ h5.modal-title {
   overflow-y: auto;
 }
 
-.dropdown-item.active, .dropdown-item:active {
+.dropdown-menu .dropdown-item.active, .dropdown-menu .dropdown-item:active {
   font-weight: 500;
   background-color: #999999;
+  color: #ffffff!important;
 }
 
 .settings-row {
   margin-bottom: 15px;
 }
 
-.component-form {
-  max-height: calc(100vh - 330px);
+.settings-row .dropdown-menu {
+  z-index: 1050;
+}
+
+.component-accordion {
+  height: calc(100vh - 500px);
   overflow-y: auto;
-  margin-top: 1rem;
-  background-color: #EFEFEF;
-  padding: 5px;
-  border-radius: 5px;
-  border: #CDCDCD 1px solid;
+  margin: 1rem 0;
+  padding: 0 5px;
+}
+
+.component-accordion.accordion>.card {
+  border-radius: 0.5rem;
+  margin-bottom: 0.2rem;
+  overflow: unset;
+}
+
+.component-accordion.accordion>.card>.card-header {
+  padding: 0.15rem 0.75rem;
+  background-color: #6c757d;
+  border-radius: 0.5rem;
+}
+
+.component-accordion.accordion>.card>.card-header .btn-link {
+  color: #fff;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+}
+
+.component-accordion.accordion>.card>.card-header button:focus {
+  border: 2px solid #fff;
+  box-shadow: none;
+}
+
+.component-accordion.accordion>.card .card-body {
+  padding: 0.75rem 1rem;
+}
+
+.component-accordion .card-body .form-group {
+  margin-bottom: 0.4rem;
+}
+
+.component-accordion .card-body .form-group label {
+  margin-bottom: 0.2rem;
+}
+
+.component-form :not(label) {
+  font-size: 0.9rem;
+}
+
+.component-form label {
+  font-size: 1rem;
+}
+
+.component-form fieldset {
+  display: flex;
+  justify-content: space-between;
+}
+
+.component-form>.component-settings .form-group,
+.component-form>.tab-settings .form-group{
+  width: 100%;
+}
+
+.component-form fieldset>.component-settings,
+.component-form fieldset>.tab-settings{
+  width: 48%;
+}
+
+.component-form .form-control {
+  height: auto;
+}
+
+.tab-parameters {
+  display: none;
 }
 
 .row ::-webkit-scrollbar {
@@ -107,10 +191,6 @@ h5.modal-title {
   max-width: 300px;
 }
 
-.component-settings{
-  display: none;
-}
-
 .component-settings :first-child {
   margin-top: 0;
 }
@@ -138,6 +218,11 @@ h5.modal-title {
   min-height: 50px;
 }
 
+.icon-option .fa, .icon-option .fab {
+  width: 20px;
+  margin-right: 10px;
+}
+
 .bin-container .bin-header {
   position: absolute;
   margin-top: 0.2rem;
@@ -149,6 +234,15 @@ h5.modal-title {
 
 .code-ui-form {
   margin: 0 0 0.5rem 0.5rem;
+}
+
+.code-ui-form .toast.show, .code-ui-form .toast.showing, .code-ui-form .toast.fade {
+  position: absolute;
+  top: -2rem;
+}
+
+.code-ui-form #save_toast {
+  right: 55%;
 }
 
 .code-output {
@@ -195,10 +289,58 @@ h5.modal-title {
   position: absolute;
   right: 0;
   top: 1.5rem;
+  z-index: 9000;
 }
 
 .page-canvas-shell.preview .page-preview-button {
   display: inline;
+}
+
+.canvas-modal {
+  position: absolute;
+  top: 15%;
+  bottom: 10%;
+  right: 20%;
+  left: 20%;
+  border: #333 2px solid;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: fit-content;
+  background: #FCFCFC;
+  box-shadow: #555 2px 2px 1rem 0.5rem;
+}
+
+.canvas-modal-title {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.canvas-page-choices {
+  padding: 0.25rem;
+}
+
+.canvas-page-choice {
+  width: 40%;
+  margin: 1rem;
+  height: 8rem;
+  border-radius: 1rem;
+}
+
+.canvas-page-choice .canvas-choice-header {
+  margin-top: 0.5rem;
+  font-size: 1.4rem
+}
+
+.canvas-page-choice .canvas-choice-content {
+  font-size: 0.9rem;
+}
+
+.dimmed-canvas-page {
+  height: 100%;
+  background: #CCCCCC;
 }
 
 .page-canvas {
@@ -219,8 +361,21 @@ h5.modal-title {
 }
 
 .designer-element {
-  border: 1px dashed black;
   z-index: 1;
+  cursor: pointer;
+}
+
+.designer-element:not(blockquote, .card-body, .tab-pane) {
+  border: 1px dashed black;
+}
+
+blockquote.designer-element {
+  border-top: 1px dashed;
+  border-right: 1px dashed;
+  border-bottom: 1px dashed;
+  border-top-color: black !important;
+  border-right-color: black !important;
+  border-bottom-color: black !important;
 }
 
 .designer-element:not(pre, .shiny-input-panel, .row-designer, .col-sm, .btn) {
@@ -319,4 +474,90 @@ span.plot-output-element, span.image-output-element {
 
 .designer-page-template .designer-element>p {
   position: absolute;
+}
+
+.designer-page-template .tabset-designer-component .tab-content>.tab-pane,
+.designer-page-template .card-body {
+  min-height: 200px;
+}
+
+#canvas-menu {
+  position: fixed;
+  z-index: 10000;
+  width: 12rem;
+  background: #444;
+  border-radius: 10px;
+  transform: scale(0);
+  transform-origin: top left;
+}
+
+#canvas-menu.visible {
+  transform: scale(1);
+  transition: transform 200ms cubic-bezier(0.13, 0.63, 0.29, 0.87);
+}
+
+#canvas-menu .item {
+  padding: 6px 12px;
+  font-size: 15px;
+  color: #EEE;
+  cursor: pointer;
+  border-radius: inherit;
+  font-size: 0.9rem;
+}
+
+#canvas-menu .item i {
+  width: 1.5rem;
+  padding-right: 0.5rem;
+}
+
+#canvas-menu .item:hover {
+  background: #343434;
+}
+
+/* bs4Dash specific conditions */
+body, h1, h2, h3, h4, h5, h6, div, span, p, label {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+body #canvas-page.wrapper * {
+  font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+}
+
+body #canvas-page.wrapper .fa, body #canvas-page.wrapper .fas,
+body #canvas-page.wrapper .far {
+  font-family: "Font Awesome 5 Free" !important;
+}
+
+body #canvas-page.wrapper .fab {
+  font-family: "Font Awesome 5 Brands" !important;
+}
+
+#canvas-page .main-header {
+  margin-bottom: 0 !important;
+}
+
+#canvas-page.wrapper .content-wrapper {
+  min-height: calc(100% - 3.55rem) !important;
+  height: calc(100% - 3.55rem) !important;
+  overflow-y: auto !important;
+}
+
+#canvas-page .content-wrapper>.content,
+#canvas-page .content-wrapper>.content>.tab-content,
+#canvas-page .content-wrapper>.content>.tab-content>.tab-pane {
+  height: 100% !important;
+}
+
+#tab_settings label, #component_settings label, #sidebar-accordion .card label,
+#settings-options_dropdown label, #canvas-page:not(.wrapper) label, #settings-page_type label {
+  font-weight: 400 !important;
+}
+
+.layout-fixed #canvas-page .main-sidebar {
+  position: absolute !important;
+  height: 100% !important;
+}
+
+#canvas-page .content-wrapper .designer-element:not(pre, .shiny-input-panel, .row-designer, .col-sm, .btn) {
+  background-color: inherit !important;
 }

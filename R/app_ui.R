@@ -18,20 +18,21 @@ appUI <- function(request) {
 
     fluidPage(
       title = "Shiny UI Designer",
-      theme = bslib::bs_theme(version = 4),
+      theme = bslib::bs_theme(version = 4L),
       lang = "en",
       warningModal("warning_modal"),
+      clearModal("clear_modal"),
 
       SettingsModUI("settings"),
 
       fluidRow(
         column(
-          width = 3,
+          width = 3L,
           class = "d-flex flex-column justify-content-between px-2",
           SidebarModUI("sidebar")
         ),
         column(
-          width = 9,
+          width = 9L,
           class = "px-2",
           CanvasModUI("canvas")
         )
@@ -68,21 +69,32 @@ addGolemExternalResources <- function() {
     ionRangeSliderDependency(),
     datePickerDependency(),
     dataTableDependency,
-    cicerone::use_cicerone()
+    cicerone::use_cicerone(),
+
+    tags$meta(name = "description", content = "Create Wireframes of the UI of shiny applications"),
+    tags$meta(name = "keywords", content = "R, shiny, designer, prototype, wireframe"),
+    tags$meta(name = "author", content = "Ashley Baldry")
   )
 
-  ui_head <- htmltools::attachDependencies(
+  htmltools::attachDependencies(
     ui_head,
-    htmltools::htmlDependency(
-      name = "Sortable",
-      version = "1.14.0",
-      src = "srcjs/sortable",
-      script = "Sortable.min.js",
-      package = "designer"
+    list(
+      htmltools::htmlDependency(
+        name = "Sortable",
+        version = "1.14.0",
+        src = "srcjs/sortable",
+        script = "Sortable.min.js",
+        package = "designer"
+      ),
+      htmltools::htmlDependency(
+        name = "bs-custom-file-input",
+        version = "1.3.4",
+        src = "srcjs/bs-custom-file-input",
+        script = "bs-custom-file-input.min.js",
+        package = "designer"
+      )
     )
   )
-
-  ui_head
 }
 
 ionRangeSliderDependency <- getFromNamespace("ionRangeSliderDependency", "shiny")

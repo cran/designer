@@ -15,8 +15,15 @@ The drag-and-drop nature of the application means that it is easy for both R and
 
 ## Installation
 
+Install from [CRAN](https://cran.r-project.org/package=designer) with:
+
 ``` r
-# Install the latest version from GitHub:
+install.packages("designer")
+```
+
+Or install the development version from [GitHub](https://github.com/ashbaldry/designer) with:
+
+``` r
 devtools::install_github("ashbaldry/designer")
 ```
 
@@ -84,6 +91,28 @@ bootstrapPage(
   )
 )
 ```
+
+## Docker 
+
+Optionally, you can also build a Dockerized version of the app:
+
+```
+sudo docker build -t designer -f Dockerfile .
+```
+
+After building the docker image (which should take a while) use the command:
+
+```
+docker run -p 80:80 designer
+```
+
+Depending on your Docker set-up, the exposed application may be available under: http://localhost:80
+
+## Sharing Designs
+
+Once you are ready with your initial design, you can share it with others using Code -> Share. This will generate a URL that when opened by another person (or yourself in the future) will show the saved state of the design and then can be added onto and saved again - this will generate a new URL to share.
+
+**NB** For bookmarking to work, the server the `{designer}` application sits on must be configured to allow sessions to be saved on the disk. As the saved state only saves the HTML and a couple of inputs, each saved state is generally only a couple of kilobytes.
 
 ## Notes
 

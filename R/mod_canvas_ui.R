@@ -8,24 +8,20 @@
 CanvasModUI <- function(id) {
   ns <- NS(id)
 
-  div(
+  tags$section(
     class = "page-canvas-shell",
+    id = ns("html"),
     span(
       class = "page-preview-button",
-      shinyscreenshot::screenshotButton(
-        id = "canvas-page",
-        label = "Snapshot UI",
-        filename = "ui_wireframe",
-        class = "btn-outline-dark"
-      ),
+      screenshtButton(class = "btn-outline-dark"),
       tags$button(
         id = ns("close_preview"),
         class = "btn btn-outline-dark",
-        icon("times", "aria-hidden" = "true"),
+        shiny::icon("xmark", "aria-hidden" = "true"),
         "Close Preview"
       )
     ),
-    div(
+    tags$section(
       class = "page-canvas-header",
       tags$svg(
         xmlns = "http://www.w3.org/2000/svg",
@@ -45,22 +41,36 @@ CanvasModUI <- function(id) {
         id = ns("title"),
         class = "page-canvas-title",
         "Shiny Application"
-      )
+      ),
+      tags$style(id = ns("style"), type = "text/css")
     ),
-    div(
+    tags$section(
       class = "page-canvas",
       id = ns("canvas")
-    )
-  )
-}
+    ),
 
-safari_circle <- function(cx, fill, stroke) {
-  tags$circle(
-    cx = cx,
-    cy = "5",
-    r = "6",
-    fill = fill,
-    stroke = stroke,
-    `stroke-width` = ".5"
+    div(
+      id = ns("menu"),
+      class = "right-click-menu",
+      div(
+        class = "item",
+        id = ns("delete"),
+        shiny::icon("xmark"),
+        "Delete"
+      )
+    ),
+
+    div(
+      class = "canvas-modal",
+      id = ns("modal"),
+      h3(
+        class = "canvas-modal-title",
+        "Select Page Type"
+      ),
+      div(
+        class = "canvas-page-choices",
+        lapply(seq_along(PAGE_TYPES), createPageItem)
+      )
+    )
   )
 }
