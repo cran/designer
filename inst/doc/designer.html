@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2022-11-20" />
+<meta name="date" content="2023-08-20" />
 
 <title>Prototyping Your UI with designer</title>
 
@@ -238,7 +238,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Prototyping Your UI with
 <code>designer</code></h1>
-<h4 class="date">2022-11-20</h4>
+<h4 class="date">2023-08-20</h4>
 
 
 
@@ -266,21 +266,18 @@ select “Shiny UI Builder” in the Addins.</p>
 <h3>Page</h3>
 <p>First is the choice of page.</p>
 <ul>
-<li><code>fluidPage</code> is the most commonly used page in shiny
-applications.</li>
-<li><code>navbarPage</code> is useful when creating multi-page
-applications.
-<ul>
-<li>Currently <code>dashboardPage</code> (part of
-<code>{shinydashboard}</code>) is not available due to conflicting
-styles, however the contents of each tab can be copy and pasted within
-the <code>dashboardBody</code> argument.</li>
-</ul></li>
-<li><code>fillPage</code> takes advantage of the rows and columns to
-align content.</li>
-<li><code>bootstrapPage</code> and <code>basicPage</code> are included
-for cases where the developer has more broad knowledge of HTML and CSS
-and will adapt the application more once the wireframe is created.</li>
+<li><strong>Standard Page</strong> is the most commonly used page in
+shiny applications.</li>
+<li><strong>Navigation Bar Page</strong> is useful when creating
+multi-page applications.</li>
+<li><strong>Dashboard Page</strong> can be used to replicate the
+<code>{bs4Dash}</code> dashboard page.</li>
+<li><strong>Fluid Page</strong> takes advantage of the rows and columns
+to align content.</li>
+<li><strong>Fill Page</strong> and <strong>Fixed Page</strong> are
+included for cases where the developer has more broad knowledge of HTML
+and CSS and will adapt the application more once the wireframe is
+created.</li>
 </ul>
 </div>
 <div id="components" class="section level3">
@@ -385,6 +382,60 @@ the application developer later on.</p>
 </tr>
 </tbody>
 </table>
+<div id="bs4dash-components" class="section level4">
+<h4><code>bs4Dash</code> Components</h4>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="31%" />
+<col width="52%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th><code>{bs4Dash}</code> Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tab</td>
+<td><code>tabItem</code>, <code>bs4TabItem</code></td>
+<td>Adding/Removing a tab</td>
+</tr>
+<tr class="even">
+<td>Box/Card</td>
+<td><code>box</code>, <code>bs4Card</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>User Box/Card</td>
+<td><code>userBox</code>, <code>bs4UserCard</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Info Box</td>
+<td><code>infoBox</code>, <code>bs4InfoBox</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Value Box</td>
+<td><code>valueBox</code>, <code>bs4ValueBox</code></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Block Quote</td>
+<td><code>blockQuote</code></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Callout</td>
+<td><code>callout</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div id="notes" class="section level4">
 <h4>Notes</h4>
 <p>A few layout rules have been implemented into the application to try
@@ -411,10 +462,11 @@ required.</p>
 </div>
 <div id="sharing-designs" class="section level2">
 <h2>Sharing Designs</h2>
-<p>Alternatively you can share it with others using Code -&gt; Share.
-This will generate a URL that when opened by another person (or yourself
-in the future) will show the saved state of the design and then can be
-added onto and saved again - this will generate a new URL to share.</p>
+<p>Alternatively you can share it with others using Templates -&gt; Save
+-&gt; Share. This will generate a URL that when opened by another person
+(or yourself in the future) will show the saved state of the design and
+then can be added onto and saved again - this will generate a new URL to
+share.</p>
 <div id="extras" class="section level3">
 <h3>Extras</h3>
 <p>There are some development tools that have been enabled upon start-up
